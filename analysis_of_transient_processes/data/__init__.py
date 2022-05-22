@@ -1,1 +1,1 @@
-from .paths import rodas_coefficients_path
+from .paths import RODAS_COEFFICIENTS_PATH

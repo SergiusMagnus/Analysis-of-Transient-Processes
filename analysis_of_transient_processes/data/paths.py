@@ -1,1 +1,1 @@
-rodas_coefficients_path = 'analysis_of_transient_processes/data/rodas_coefficients/'
+RODAS_COEFFICIENTS_PATH = 'analysis_of_transient_processes/data/rodas_coefficients/'

@@ -1,11 +1,11 @@
 import numpy as np
 from scipy import linalg
 
-from ..data import rodas_coefficients_path
+from ..data import RODAS_COEFFICIENTS_PATH
 
-alfa = np.load(rodas_coefficients_path + 'alfa.npy')
-gamma = np.load(rodas_coefficients_path + 'gamma.npy')
-b = np.load(rodas_coefficients_path + 'b.npy')
+alfa = np.load(RODAS_COEFFICIENTS_PATH + 'alfa.npy')
+gamma = np.load(RODAS_COEFFICIENTS_PATH + 'gamma.npy')
+b = np.load(RODAS_COEFFICIENTS_PATH + 'b.npy')
 
 alfa_sum = np.array([np.sum(alfa[i, :i]) for i in range(alfa.shape[0])])
 gamma_sum = np.sum(gamma, axis=1)
