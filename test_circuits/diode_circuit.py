@@ -16,7 +16,7 @@ def diode_circuit(start_t=0, end_t=2 * np.pi):
 
     circuit.add_element(VoltageSource(lambda t: smp.sin(t)), (0, 1), (False,))
     circuit.add_element(Resistance(1), (1, 2), (False,))
-    circuit.add_element(Diode(), (2, 3), (False,))
+    circuit.add_element(Diode(), (2, 3), (True,))
     circuit.add_element(Capacitance(1e-12), (2, 0), (False,))
     circuit.add_element(Resistance(1), (3, 0), (False,))
 
