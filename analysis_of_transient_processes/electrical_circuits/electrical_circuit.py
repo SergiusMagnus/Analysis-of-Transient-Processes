@@ -39,7 +39,7 @@ class ElectricalCircuit:
 
     def add_element(self, circuit_element, nodes, calculate_current):
         if circuit_element.__class__.__name__ in ['VoltageSource', 'Inductance']:
-            calculate_current = (True,)
+            calculate_current = [True]
 
         self.elements.append({'element_id': self.elements_count,
                               'element': circuit_element,
