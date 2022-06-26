@@ -150,13 +150,13 @@ def step_5() -> None:
 
 
 def save_rodas_coefficients() -> None:
-    np.save('rodas_coefficients/alfa', alfa_ij)
-    np.save('rodas_coefficients/gamma', gamma_ij)
-    np.save('rodas_coefficients/b', b_i)
+    np.save('rodas_coefficients/rodas_coefficients/alfa', alfa_ij)
+    np.save('rodas_coefficients/rodas_coefficients/gamma', gamma_ij)
+    np.save('rodas_coefficients/rodas_coefficients/b', b_i)
 
-    np.savetxt('rodas_coefficients/alfa.csv', alfa_ij)
-    np.savetxt('rodas_coefficients/gamma.csv', gamma_ij)
-    np.savetxt('rodas_coefficients/b.csv', b_i)
+    np.savetxt('rodas_coefficients/rodas_coefficients/alfa.csv', alfa_ij)
+    np.savetxt('rodas_coefficients/rodas_coefficients/gamma.csv', gamma_ij)
+    np.savetxt('rodas_coefficients/rodas_coefficients/b.csv', b_i)
 
 
 def checking() -> None:
