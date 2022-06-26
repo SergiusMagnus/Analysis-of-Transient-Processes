@@ -1,7 +1,7 @@
 import numpy as np
 from scipy import linalg
 
-from analysis_of_transient_processes.data import RODAS_COEFFICIENTS_PATH
+from transient_analysis.data import RODAS_COEFFICIENTS_PATH
 
 alfa = np.load(f'{RODAS_COEFFICIENTS_PATH}alfa.npy')
 gamma = np.load(f'{RODAS_COEFFICIENTS_PATH}gamma.npy')

@@ -1,14 +1,14 @@
 import sympy as smp
 import numpy as np
 
-from analysis_of_transient_processes.circuit_elements import Resistance, \
+from transient_analysis.circuit_elements import Resistance, \
                                                              Capacitance, \
                                                              VoltageSource, \
                                                              Diode
 
-from analysis_of_transient_processes.electrical_circuits import ElectricalCircuit
-from analysis_of_transient_processes.calculation_of_equations import calculate_solution
-from analysis_of_transient_processes.visualization import visualize_solution
+from transient_analysis.electrical_circuits import ElectricalCircuit
+from transient_analysis.calculation_of_equations import calculate_solution
+from transient_analysis.visualization import visualize_solution
 
 
 def diode_circuit(start_t=0, end_t=2 * np.pi):

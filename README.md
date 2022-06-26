@@ -1,1 +1,1 @@
-# Analysis of Transient Processes
+# Transient Analysis
