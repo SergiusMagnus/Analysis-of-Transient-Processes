@@ -1,17 +1,14 @@
 import sympy as smp
 import numpy as np
 
-from transient_analysis.circuit_elements import Resistance, \
-                                                             Capacitance, \
-                                                             VoltageSource, \
-                                                             Diode
+from transient_analysis.circuit_elements import Resistance, Capacitance, VoltageSource, Diode
 
 from transient_analysis.electrical_circuits import ElectricalCircuit
 from transient_analysis.calculation_of_equations import calculate_solution
 from transient_analysis.visualization import visualize_solution
 
 
-def diode_circuit(start_t=0, end_t=2 * np.pi):
+def diode_circuit(start_t=0, end_t=10 * np.pi):
     circuit = ElectricalCircuit()
 
     circuit.add_element(VoltageSource(lambda t: smp.sin(t)), [0, 1], [False])
@@ -27,7 +24,7 @@ def diode_circuit(start_t=0, end_t=2 * np.pi):
 
     t, y = calculate_solution(circuit, start_t, end_t, initial_values)
 
-    solution_path = 'test_circuits_solutions/diode_circuit/'
+    solution_path = 'test_circuits/diode_circuit/'
 
     for i in range(len(y)):
         visualize_solution(t, y[i], circuit.variables[i], t.size - 1, 'Solution ' + circuit.variables[i], solution_path)

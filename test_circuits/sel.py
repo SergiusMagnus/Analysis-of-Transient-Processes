@@ -1,20 +1,17 @@
 import sympy as smp
+import numpy as np
 
-from transient_analysis.circuit_elements import Resistance, \
-                                                             Inductance, \
-                                                             Capacitance, \
-                                                             VoltageSource, \
-                                                             NJFET
+from transient_analysis.circuit_elements import Resistance, Inductance, Capacitance, VoltageSource, NJFET
 
 from transient_analysis.electrical_circuits import ElectricalCircuit
 from transient_analysis.calculation_of_equations import calculate_solution
 from transient_analysis.visualization import visualize_solution
 
 
-def sel(start_t=0, end_t=1):
+def sel(start_t=0, end_t=10 * np.pi):
     circuit = ElectricalCircuit()
 
-    circuit.add_element(VoltageSource(lambda t: smp.sin(2 * smp.pi * t)), [0, 11], [True])
+    circuit.add_element(VoltageSource(lambda t: smp.sin(t)), [0, 11], [True])
     circuit.add_element(Capacitance(47e-9), [11, 0], [False])
     circuit.add_element(Resistance(50), [11, 9], [False])
     circuit.add_element(Capacitance(47e-9), [9, 0], [False])
@@ -53,7 +50,7 @@ def sel(start_t=0, end_t=1):
 
     t, y = calculate_solution(circuit, start_t, end_t, initial_values)
 
-    solution_path = 'test_circuits_solutions/sel/'
+    solution_path = 'test_circuits/sel/'
 
     for i in range(len(y)):
         visualize_solution(t, y[i], circuit.variables[i], t.size - 1, 'Solution ' + circuit.variables[i], solution_path)
