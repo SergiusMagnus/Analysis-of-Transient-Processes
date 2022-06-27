@@ -12,7 +12,7 @@ omega_ij = np.array([np.nan for _ in range(s * s)]).reshape(s, s)
 gamma_ij = np.array([np.nan for _ in range(s * s)]).reshape(s, s)
 
 
-def set_initial_values() -> None:
+def set_initial_values():
     for i in range(s):
         for j in range(i, s):
             alfa_ij[i, j] = 0.
@@ -38,7 +38,7 @@ def set_initial_values() -> None:
         beta_ij[i, i] = gamma
 
 
-def step_1() -> None:
+def step_1():
     b_i[5] = gamma
 
     # Calculation: b_i[0], b_i[1], b_i[2], b_i[3], b_i[4]
@@ -61,7 +61,7 @@ def step_1() -> None:
     beta_i[5] = beta_ij[5, :-1].sum()
 
 
-def step_2() -> None:
+def step_2():
     # Calculation: b_i[2] * beta_ij[2, 1] + b_i[3] * beta_ij[3, 1], b_i[3] * beta_ij[3, 2]
     A = np.array([
         [beta_i[1], beta_i[2]],
@@ -88,7 +88,7 @@ def step_2() -> None:
     beta_ij[3, 0] = beta_i[3] - beta_ij[3, 1] - beta_ij[3, 2]
 
 
-def step_3() -> None:
+def step_3():
     alfa_ij[5, 4] = gamma
 
     # Calculation: alfa_ij[5, 1], alfa_ij[5, 2], alfa_ij[5, 3]
@@ -113,7 +113,7 @@ def step_3() -> None:
     omega_ij = linalg.inv(beta_ij)
 
 
-def step_4() -> None:
+def step_4():
     # Calculation: alfa_ij[4, 0], alfa_ij[4, 1], alfa_ij[4, 2], alfa_ij[4, 3]
     A = np.array([
         [0, beta_i[1], beta_i[2], beta_i[3]],
@@ -127,7 +127,7 @@ def step_4() -> None:
     alfa_ij[4, 0:4] = linalg.solve(A, b)
 
 
-def step_5() -> None:
+def step_5():
     # Calculation: alfa_ij[2, 1], alfa_ij[3, 1], alfa_ij[3, 2]
     A = np.array([
         [b_i[2] * alfa_i[2] * beta_i[1], b_i[3] * alfa_i[3] * beta_i[1], b_i[3] * alfa_i[3] * beta_i[2]],
@@ -149,7 +149,7 @@ def step_5() -> None:
     gamma_ij = beta_ij - alfa_ij
 
 
-def save_rodas_coefficients() -> None:
+def save_rodas_coefficients():
     np.save('rodas_coefficients/rodas_coefficients/alfa', alfa_ij)
     np.save('rodas_coefficients/rodas_coefficients/gamma', gamma_ij)
     np.save('rodas_coefficients/rodas_coefficients/b', b_i)
@@ -159,7 +159,7 @@ def save_rodas_coefficients() -> None:
     np.savetxt('rodas_coefficients/rodas_coefficients/b.csv', b_i)
 
 
-def checking() -> None:
+def checking():
     inv_gamma_ij = np.linalg.inv(gamma_ij)
 
     new_alfa_ij = np.dot(alfa_ij, inv_gamma_ij)
@@ -175,7 +175,7 @@ def checking() -> None:
     print(c_ij)
 
 
-def calculate_rodas_coefficients() -> None:
+def calculate_rodas_coefficients():
     set_initial_values()
     step_1()
     step_2()
@@ -184,7 +184,7 @@ def calculate_rodas_coefficients() -> None:
     step_5()
 
 
-def calculate_and_save_rodas_coefficients() -> None:
+def calculate_and_save_rodas_coefficients():
     calculate_rodas_coefficients()
     save_rodas_coefficients()
 

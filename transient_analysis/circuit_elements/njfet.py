@@ -14,11 +14,8 @@ class NJFET:
         self.PB = 1
         self.M = 0.5
         self.VTO = -2
-        # self.VTO = -2.617
         self.BETA = 1e-4
-        # self.BETA = 1.578e-3
         self.LAMBDA = 0
-        # self.LAMBDA = 1.89e-3
         self.ALPHA = 0
         self.VK = 0
 

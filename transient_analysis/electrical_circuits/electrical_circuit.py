@@ -1,5 +1,7 @@
 import numpy as np
 
+from collections.abc import Callable
+
 
 class ElectricalCircuit:
     """Electrical Circuit"""
